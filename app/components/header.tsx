@@ -1,4 +1,5 @@
 import Link from "next/link";
+import LoginPage from "./loginpage";
 
 export default function Header() {
     return (
@@ -13,34 +14,32 @@ export default function Header() {
                 <nav>
                     <ul className="flex space-x-6 text-gray-600">
                         <li>
-                            <a
-                                href="#features"
+                            <Link
+                                href="/#features"
                                 className="hover:text-indigo-600"
                             >
                                 Features
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a href="#about" className="hover:text-indigo-600">
+                            <Link
+                                href="/#about"
+                                className="hover:text-indigo-600"
+                            >
                                 About
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a
-                                href="#contact"
+                            <Link
+                                href="/#contact"
                                 className="hover:text-indigo-600"
                             >
                                 Contact
-                            </a>
+                            </Link>
                         </li>
-                        <li>
-                            <a
-                                href="#"
-                                className="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700"
-                            >
-                                Get Started
-                            </a>
-                        </li>
+                        <span className="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 m-0">
+                            <LoginPage />
+                        </span>
                     </ul>
                 </nav>
             </div>
