@@ -55,7 +55,7 @@ export default function ProfileDetails({ user }: ProfileDetailsProps) {
                             type="text"
                             id="name"
                             name="name"
-                            value={formData.name}
+                            value={formData.name || ""}
                             onChange={handleChange}
                             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                             required
@@ -72,7 +72,7 @@ export default function ProfileDetails({ user }: ProfileDetailsProps) {
                             type="email"
                             id="email"
                             name="email"
-                            value={formData.email}
+                            value={formData.email || ""}
                             onChange={handleChange}
                             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                             required
