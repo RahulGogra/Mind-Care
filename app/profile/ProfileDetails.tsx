@@ -3,14 +3,14 @@
 import { useState } from "react";
 import Image from "next/image";
 
-type User = {
-    name: string;
-    email: string;
-    image?: string;
+type LocalUser = {
+    name?: string | null;
+    email?: string | null;
+    image?: string | null;
 };
 
 type ProfileDetailsProps = {
-    user: User;
+    user: LocalUser;
 };
 
 export default function ProfileDetails({ user }: ProfileDetailsProps) {
