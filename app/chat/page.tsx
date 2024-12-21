@@ -1,3 +1,4 @@
+import Chat from "../components/Chat";
 import Header from "../components/header";
 import Image from "next/image";
 
@@ -5,8 +6,8 @@ export default function chat() {
     return (
         <>
             <Header />
-            <section className="flex bg-indigo-600 text-white my-10">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+            <section className="flex flex-col my-10 ">
+                <div className=" bg-indigo-600 text-white px-4 sm:px-6 lg:px-8 py-4 text-center">
                     <Image
                         src="/chatbot.png"
                         height={100}
@@ -20,6 +21,9 @@ export default function chat() {
                         Start chatting with your personalised chat bot for
                         accurate diagonostic and mantain your mental health
                     </p>
+                </div>
+                <div className=" bg-gray-100 p-4">
+                    <Chat />
                 </div>
             </section>
         </>

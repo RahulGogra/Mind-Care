@@ -6,7 +6,7 @@ import Image from "next/image";
 type User = {
     name: string;
     email: string;
-    avatarUrl?: string;
+    image?: string;
 };
 
 type ProfileDetailsProps = {
@@ -33,9 +33,9 @@ export default function ProfileDetails({ user }: ProfileDetailsProps) {
 
     return (
         <div className="bg-white shadow-md rounded-lg p-6">
-            {user.avatarUrl && (
+            {user.image && (
                 <Image
-                    src={user.avatarUrl}
+                    src={user.image}
                     alt="Avatar"
                     height={100}
                     width={100}
