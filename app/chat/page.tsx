@@ -1,8 +1,16 @@
 import Chat from "../components/Chat";
 import Header from "../components/header";
 import Image from "next/image";
+import { auth } from "@/auth";
+import { redirect } from "next/navigation";
 
-export default function chat() {
+export default async function chat() {
+    const session = await auth();
+
+    if (!session?.user) {
+        redirect("/");
+    }
+
     return (
         <>
             <Header />

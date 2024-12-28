@@ -1,8 +1,10 @@
 import Image from "next/image";
 import Header from "./components/header";
 import Link from "next/link";
+import { auth } from "@/auth";
 
-export default function Home() {
+export default async function Home() {
+    const session = await auth();
     return (
         <div className="bg-gray-100 min-h-screen">
             <Header />
@@ -24,12 +26,12 @@ export default function Home() {
                         mood tracker, and therapist connections. Take control of
                         your well-being today.
                     </p>
-                    <a
-                        href="#features"
+                    <Link
+                        href="/#features"
                         className="mt-8 inline-block bg-white text-indigo-600 font-bold px-6 py-3 rounded hover:bg-gray-200"
                     >
                         Learn More
-                    </a>
+                    </Link>
                 </div>
             </section>
 
@@ -39,18 +41,36 @@ export default function Home() {
                         Features
                     </h2>
                     <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                        <Link
-                            className="cursor-pointer p-6 bg-white rounded-lg shadow-md"
-                            href="/chat"
-                        >
-                            <h3 className="text-xl font-bold text-indigo-600">
-                                AI Chatbot
-                            </h3>
-                            <p className="mt-4 text-gray-600">
-                                Get personalized mental health advice and coping
-                                techniques from our AI-powered chatbot.
-                            </p>
-                        </Link>
+                        {session?.user ? (
+                            <Link
+                                className="cursor-pointer p-6 bg-white rounded-lg shadow-md"
+                                href="/chat"
+                            >
+                                <h3 className="text-xl font-bold text-indigo-600">
+                                    AI Chatbot
+                                </h3>
+                                <p className="mt-4 text-gray-600">
+                                    Get personalized mental health advice and
+                                    coping techniques from our AI-powered
+                                    chatbot.
+                                </p>
+                            </Link>
+                        ) : (
+                            <Link
+                                className="cursor-pointer p-6 bg-white rounded-lg shadow-md"
+                                href="/auth"
+                            >
+                                <h3 className="text-xl font-bold text-indigo-600">
+                                    AI Chatbot
+                                </h3>
+                                <p className="mt-4 text-gray-600">
+                                    Get personalized mental health advice and
+                                    coping techniques from our AI-powered
+                                    chatbot.
+                                </p>
+                            </Link>
+                        )}
+
                         <div className="cursor-pointer p-6 bg-white rounded-lg shadow-md">
                             <h3 className="text-xl font-bold text-indigo-600">
                                 Symptom Checker
@@ -78,7 +98,10 @@ export default function Home() {
                                 easily.
                             </p>
                         </div>
-                        <div className="cursor-pointer p-6 bg-white rounded-lg shadow-md">
+                        <Link
+                            href="/emergency-assistance"
+                            className="cursor-pointer p-6 bg-white rounded-lg shadow-md"
+                        >
                             <h3 className="text-xl font-bold text-indigo-600">
                                 Emergency Assistance
                             </h3>
@@ -86,7 +109,7 @@ export default function Home() {
                                 Quick access to helplines and crisis resources
                                 when you need them most.
                             </p>
-                        </div>
+                        </Link>
                         <div className="cursor-pointer p-6 bg-white rounded-lg shadow-md">
                             <h3 className="text-xl font-bold text-indigo-600">
                                 Resource Library

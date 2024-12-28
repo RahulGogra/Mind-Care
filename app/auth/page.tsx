@@ -1,17 +1,15 @@
 import { auth } from "@/auth";
 import LoginModal from "./LoginModal";
-import Link from "next/link";
+import { redirect } from "next/navigation";
 
 export default async function LoginPage() {
     const session = await auth();
-
+    if (session?.user) {
+        redirect("/");
+    }
     return (
         <>
-            {session?.user ? (
-                <Link href="/profile">{session.user.name}</Link>
-            ) : (
-                <LoginModal />
-            )}
+            <LoginModal />
         </>
     );
 }
